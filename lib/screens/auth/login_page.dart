@@ -59,101 +59,104 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.asset(
-                'images/logo.png',
-                color: Colors.blue.shade800,
-                height: 150,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Image.asset(
+                  'images/logo.png',
+                  color: Colors.blue.shade800,
+                  height: 150,
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
 
-              // username input
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFieldInput(
-                    textEditingController: _emailController,
-                    hintText: 'Email',
-                    icon: Icon(Icons.email),
-                    textInputType: TextInputType.text),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFieldInput(
-                    isPass: _isPass,
-                    textEditingController: _passwordController,
-                    icon: IconButton(
-                      icon: Icon(Icons.visibility),
-                      onPressed: () {
-                        setState(() {
-                          _isPass = !_isPass;
-                        });
-                      },
-                    ),
-                    hintText: 'Password',
-                    textInputType: TextInputType.visiblePassword),
-              ),
+                // username input
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextFieldInput(
+                      textEditingController: _emailController,
+                      hintText: 'Email',
+                      icon: Icon(Icons.email),
+                      textInputType: TextInputType.text),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextFieldInput(
+                      isPass: _isPass,
+                      textEditingController: _passwordController,
+                      icon: IconButton(
+                        icon: Icon(Icons.visibility),
+                        onPressed: () {
+                          setState(() {
+                            _isPass = !_isPass;
+                          });
+                        },
+                      ),
+                      hintText: 'Password',
+                      textInputType: TextInputType.visiblePassword),
+                ),
 
-              // **************************** login button
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: InkWell(
-                  onTap: loginUser,
-                  child: Container(
-                    child: _isLoading
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              color: Theme.of(context).colorScheme.primary,
+                // **************************** login button
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: InkWell(
+                    onTap: loginUser,
+                    child: Container(
+                      child: _isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            )
+                          : Text(
+                              'Login',
+                              style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.tertiary),
                             ),
-                          )
-                        : Text(
-                            'Login',
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary),
-                          ),
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                          Radius.circular(25),
-                        )),
-                        color: Colors.blue.shade800),
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                            Radius.circular(25),
+                          )),
+                          color: Colors.blue.shade800),
+                    ),
                   ),
                 ),
-              ),
 
-              // ********************transitioning to signup
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: const Text("Don't have an account? "),
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                  ),
-                  GestureDetector(
-                    onTap: navigateToLogin,
-                    child: Container(
-                      child: const Text(
-                        "Sign up",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                // ********************transitioning to signup
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: const Text("Don't have an account? "),
                       padding: const EdgeInsets.symmetric(vertical: 8),
                     ),
-                  ),
-                ],
-              )
-            ],
+                    GestureDetector(
+                      onTap: navigateToLogin,
+                      child: Container(
+                        child: const Text(
+                          "Sign up",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

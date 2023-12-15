@@ -52,8 +52,8 @@ class Page1 extends StatelessWidget {
                       Text(
                         'Quick Response',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 24.0,
+                          color: Theme.of(context).colorScheme.tertiary,
+                          fontSize: 26.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -63,7 +63,7 @@ class Page1 extends StatelessWidget {
                       Text(
                         'Get quck response from skilled',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.tertiary,
                           fontSize: 18.0,
                         ),
                       ),
@@ -73,7 +73,7 @@ class Page1 extends StatelessWidget {
                       Text(
                         'workers near you',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.tertiary,
                           fontSize: 18.0,
                         ),
                       ),

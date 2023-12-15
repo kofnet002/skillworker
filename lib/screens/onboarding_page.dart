@@ -64,7 +64,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     child: Text(
                       'Skip',
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme.of(context).colorScheme.tertiary,
                       ),
                     )),
 
@@ -94,7 +94,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         child: Text(
                           'Proceed',
                           style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context).colorScheme.tertiary,
                           ),
                         ),
                       )
@@ -107,7 +107,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         child: Text(
                           'Next',
                           style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context).colorScheme.tertiary,
                           ),
                         ),
                       ),

@@ -1,17 +1,96 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skillworker/theme/theme_provider.dart';
+import 'package:skillworker/widgets/booking_page.dart';
+import 'package:skillworker/widgets/recent_booking_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _page = 0;
+
+  late PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    pageController.dispose();
+  }
+
+  void navigationTapped(int page) {
+    pageController.jumpToPage(page);
+  }
+
+  void onPageChanged(int page) {
+    setState(() {
+      _page = page;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
+      bottomNavigationBar: CupertinoTabBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: _page == 0
+                  ? Theme.of(context).colorScheme.tertiary
+                  : Theme.of(context).colorScheme.secondary,
+            ),
+            label: '',
+            // backgroundColor: Theme.of(context).colorScheme.primary,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_circle,
+              color: _page == 1
+                  ? Theme.of(context).colorScheme.tertiary
+                  : Theme.of(context).colorScheme.secondary,
+            ),
+            label: '',
+            backgroundColor: Theme.of(context).colorScheme.tertiary,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.notifications,
+              color: _page == 2
+                  ? Theme.of(context).colorScheme.tertiary
+                  : Theme.of(context).colorScheme.secondary,
+            ),
+            label: '',
+            backgroundColor: Theme.of(context).colorScheme.tertiary,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: _page == 3
+                  ? Theme.of(context).colorScheme.tertiary
+                  : Theme.of(context).colorScheme.secondary,
+            ),
+            label: '',
+            backgroundColor: Theme.of(context).colorScheme.primary,
+          ),
+        ],
+        onTap: navigationTapped,
+      ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -40,45 +119,33 @@ class HomePage extends StatelessWidget {
 
       // ******************************** BODY
 
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Recent Bookings',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: 'Kanit'),
+      body: PageView(
+        children: [
+          BookingPage(),
+          Center(
+            child: Text(
+              'Search',
             ),
-            const SizedBox(
-              height: 15,
+          ),
+          Center(
+            child: Text(
+              'Search',
             ),
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        'https://www.immigrationcanadaservices.com/wp-content/uploads/2014/11/ALBERTA-Semi-Skilled-Worker-Program.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
+          ),
+          Center(
+            child: Text(
+              'favorite',
+            ),
+          ),
+          Center(
+            child: Text(
+              'Profile',
+            ),
+          ),
+        ],
+        controller: pageController,
+        onPageChanged: onPageChanged,
+        // physics: const NeverScrollableScrollPhysics(),
       ),
     );
   }

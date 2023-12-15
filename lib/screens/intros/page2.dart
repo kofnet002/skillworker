@@ -52,8 +52,8 @@ class Page2 extends StatelessWidget {
                       Text(
                         'Great Service',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 24.0,
+                          color: Theme.of(context).colorScheme.tertiary,
+                          fontSize: 26.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -63,7 +63,7 @@ class Page2 extends StatelessWidget {
                       Text(
                         'Get feedback from a rendered/offered',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.tertiary,
                           fontSize: 18.0,
                         ),
                       ),
@@ -73,14 +73,14 @@ class Page2 extends StatelessWidget {
                       Text(
                         'service so that we can ensure great',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.tertiary,
                           fontSize: 18.0,
                         ),
                       ),
                       Text(
                         'services are offered to our customers',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.tertiary,
                           fontSize: 18.0,
                         ),
                       ),
