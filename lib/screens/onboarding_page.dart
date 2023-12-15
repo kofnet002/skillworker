@@ -75,7 +75,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   effect: WormEffect(
                     spacing: 10,
                     dotColor: Colors.black87,
-                    activeDotColor: Colors.teal.shade700,
+                    activeDotColor: Colors.blue.shade800,
                   ),
                   onDotClicked: (index) => _controller.animateToPage(index,
                       duration: const Duration(milliseconds: 500),
