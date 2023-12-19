@@ -77,154 +77,160 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset(
-                  'images/logo.png',
-                  color: Colors.blue.shade800,
-                  height: 50,
-                ),
-                const Text(
-                  'Skillworker',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                )
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Stack(
-                    children: [
-                      _image != null
-                          ? CircleAvatar(
-                              radius: 64,
-                              backgroundImage: MemoryImage(_image!),
-                            )
-                          : const CircleAvatar(
-                              radius: 64,
-                              backgroundImage: NetworkImage(
-                                  'https://www.mtsolar.us/wp-content/uploads/2020/04/avatar-placeholder.png'),
-                            ),
-                      Positioned(
-                          bottom: -10,
-                          left: 80,
-                          child: IconButton(
-                            onPressed: selectImage,
-                            icon: Icon(Icons.add_a_photo),
-                          ))
-                    ],
+                  Image.asset(
+                    'images/logo.png',
+                    color: Colors.blue.shade800,
+                    height: 50,
                   ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-
-                  // username input
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: TextFieldInput(
-                        textEditingController: _usernameController,
-                        hintText: 'Username',
-                        icon: Icon(Icons.person),
-                        textInputType: TextInputType.text),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: TextFieldInput(
-                        textEditingController: _emailController,
-                        hintText: 'Email',
-                        icon: Icon(Icons.email),
-                        textInputType: TextInputType.text),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: TextFieldInput(
-                        isPass: _isPass,
-                        icon: IconButton(
-                          icon: Icon(Icons.visibility),
-                          onPressed: () {
-                            setState(() {
-                              _isPass = !_isPass;
-                            });
-                          },
-                        ),
-                        textEditingController: _passwordController,
-                        hintText: 'Password',
-                        textInputType: TextInputType.visiblePassword),
-                  ),
-
-                  // **************************** login button
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: InkWell(
-                      onTap: registerUser,
-                      child: Container(
-                        child: _isLoading
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                              )
-                            : Text(
-                                'Sign up',
-                                style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.primary),
-                              ),
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                              Radius.circular(25),
-                            )),
-                            color: Colors.blue.shade800),
-                      ),
-                    ),
-                  ),
-
-                  // ********************transitioning to signup
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: const Text("Already have an account? "),
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                      ),
-                      GestureDetector(
-                        onTap: navigateToLogin,
-                        child: Container(
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                        ),
-                      ),
-                    ],
+                  const Text(
+                    'Skillworker',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   )
                 ],
               ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 50,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        _image != null
+                            ? CircleAvatar(
+                                radius: 64,
+                                backgroundImage: MemoryImage(_image!),
+                              )
+                            : const CircleAvatar(
+                                radius: 64,
+                                backgroundImage: NetworkImage(
+                                    'https://www.mtsolar.us/wp-content/uploads/2020/04/avatar-placeholder.png'),
+                              ),
+                        Positioned(
+                            bottom: -10,
+                            left: 80,
+                            child: IconButton(
+                              onPressed: selectImage,
+                              icon: Icon(Icons.add_a_photo),
+                            ))
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+
+                    // username input
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: TextFieldInput(
+                          textEditingController: _usernameController,
+                          hintText: 'Username',
+                          icon: Icon(Icons.person),
+                          textInputType: TextInputType.text),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: TextFieldInput(
+                          textEditingController: _emailController,
+                          hintText: 'Email',
+                          icon: Icon(Icons.email),
+                          textInputType: TextInputType.text),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: TextFieldInput(
+                          isPass: _isPass,
+                          icon: IconButton(
+                            icon: Icon(Icons.visibility),
+                            onPressed: () {
+                              setState(() {
+                                _isPass = !_isPass;
+                              });
+                            },
+                          ),
+                          textEditingController: _passwordController,
+                          hintText: 'Password',
+                          textInputType: TextInputType.visiblePassword),
+                    ),
+
+                    // **************************** login button
+                    Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: InkWell(
+                        onTap: registerUser,
+                        child: Container(
+                          child: _isLoading
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                )
+                              : Text(
+                                  'Sign up',
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
+                                ),
+                          width: double.infinity,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                Radius.circular(25),
+                              )),
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
+                      ),
+                    ),
+
+                    // ********************transitioning to signup
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          child: const Text("Already have an account? "),
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                        ),
+                        GestureDetector(
+                          onTap: navigateToLogin,
+                          child: Container(
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

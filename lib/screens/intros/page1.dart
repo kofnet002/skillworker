@@ -48,32 +48,32 @@ class Page1 extends StatelessWidget {
                   left: MediaQuery.of(context).size.width * 0.05,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         'Quick Response',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 24.0,
+                          color: Colors.white,
+                          fontSize: 26.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Text(
                         'Get quck response from skilled',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Colors.white,
                           fontSize: 18.0,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Text(
                         'workers near you',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Colors.white,
                           fontSize: 18.0,
                         ),
                       ),

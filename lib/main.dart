@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Skillworker',
+          // theme: darkMode,
           theme: Provider.of<ThemeProvider>(context).themeData,
           home: StreamBuilder(
               stream: FirebaseAuth.instance.authStateChanges(),

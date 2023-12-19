@@ -48,39 +48,39 @@ class Page3 extends StatelessWidget {
                   left: MediaQuery.of(context).size.width * 0.05,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         'Great Service',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 24.0,
+                          color: Colors.white,
+                          fontSize: 26.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Text(
                         'Get feedback from a rendered/offered',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Colors.white,
                           fontSize: 18.0,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Text(
                         'service so that we can ensure great',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Colors.white,
                           fontSize: 18.0,
                         ),
                       ),
                       Text(
                         'services are offered to our customers',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Colors.white,
                           fontSize: 18.0,
                         ),
                       ),
