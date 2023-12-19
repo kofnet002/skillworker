@@ -4,10 +4,10 @@ ThemeData lightMode = ThemeData(
     fontFamily: 'Kanit',
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-      background: Colors.grey.shade200,
-      primary: Color.fromRGBO(253, 246, 247, 1),
-      secondary: Colors.grey.shade300,
-    ));
+        background: Colors.grey.shade100,
+        primary: Color.fromARGB(255, 69, 0, 150),
+        secondary: Color.fromARGB(255, 252, 247, 247),
+        tertiary: Colors.grey.shade400));
 
 ThemeData darkMode = ThemeData(
     fontFamily: 'Kanit',
@@ -18,3 +18,6 @@ ThemeData darkMode = ThemeData(
         secondary: Colors.grey.shade700,
         tertiary: Colors.white,
         onTertiary: Colors.blue.shade800));
+
+// rgba(69,0,150,255)
+// rgb(252,247,247)

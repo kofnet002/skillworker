@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   int _page = 0;
 
   late PageController pageController;
+  TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -29,6 +30,7 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     super.dispose();
     pageController.dispose();
+    _searchController.dispose();
   }
 
   void navigationTapped(int page) {
@@ -44,56 +46,62 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      bottomNavigationBar: CupertinoTabBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: _page == 0
-                  ? Theme.of(context).colorScheme.tertiary
-                  : Theme.of(context).colorScheme.secondary,
-            ),
-            label: '',
-            // backgroundColor: Theme.of(context).colorScheme.primary,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: CupertinoContextMenu.kEndBoxShadow,
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(25), topLeft: Radius.circular(25))),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          child: CupertinoTabBar(
+            backgroundColor: Colors.transparent,
+            border: Border.all(color: Colors.transparent),
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home_outlined,
+                  color: _page == 0
+                      ? Theme.of(context).colorScheme.primary
+                      : Colors.grey.shade500,
+                ),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.add,
+                  color: _page == 1
+                      ? Theme.of(context).colorScheme.primary
+                      : Colors.grey.shade500,
+                ),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.notifications,
+                  color: _page == 2
+                      ? Theme.of(context).colorScheme.primary
+                      : Colors.grey.shade500,
+                ),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  color: _page == 3
+                      ? Theme.of(context).colorScheme.primary
+                      : Colors.grey.shade500,
+                ),
+                label: '',
+              ),
+            ],
+            onTap: navigationTapped,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_circle,
-              color: _page == 1
-                  ? Theme.of(context).colorScheme.tertiary
-                  : Theme.of(context).colorScheme.secondary,
-            ),
-            label: '',
-            backgroundColor: Theme.of(context).colorScheme.tertiary,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications,
-              color: _page == 2
-                  ? Theme.of(context).colorScheme.tertiary
-                  : Theme.of(context).colorScheme.secondary,
-            ),
-            label: '',
-            backgroundColor: Theme.of(context).colorScheme.tertiary,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: _page == 3
-                  ? Theme.of(context).colorScheme.tertiary
-                  : Theme.of(context).colorScheme.secondary,
-            ),
-            label: '',
-            backgroundColor: Theme.of(context).colorScheme.primary,
-          ),
-        ],
-        onTap: navigationTapped,
+        ),
       ),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         // ******************************** AVATAR
         leading: Padding(
           padding: const EdgeInsets.only(left: 12.0),
@@ -105,7 +113,13 @@ class _HomePageState extends State<HomePage> {
         ),
 
         // ******************************** SEARCH BAR
-        title: CupertinoSearchTextField(),
+        title: CupertinoSearchTextField(
+          backgroundColor: Colors.white,
+          controller: _searchController,
+          onSubmitted: (value) {
+            print(value);
+          },
+        ),
 
         // ******************************** LOGOUT BUTTON
         actions: [
