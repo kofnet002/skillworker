@@ -61,10 +61,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     onTap: () {
                       _controller.jumpToPage(2);
                     },
-                    child: Text(
+                    child: const Text(
                       'Skip',
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.tertiary,
+                        color: Colors.white,
                       ),
                     )),
 
@@ -94,7 +94,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         child: Text(
                           'Proceed',
                           style: TextStyle(
-                            color: Theme.of(context).colorScheme.tertiary,
+                            color: Colors.white,
                           ),
                         ),
                       )
@@ -104,10 +104,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               duration: const Duration(milliseconds: 500),
                               curve: Curves.easeIn);
                         },
-                        child: Text(
+                        child: const Text(
                           'Next',
                           style: TextStyle(
-                            color: Theme.of(context).colorScheme.tertiary,
+                            color: Colors.white,
                           ),
                         ),
                       ),

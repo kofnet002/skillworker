@@ -2,10 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:skillworker/theme/theme_provider.dart';
 import 'package:skillworker/widgets/booking_page.dart';
-import 'package:skillworker/widgets/recent_booking_page.dart';
+import 'package:skillworker/widgets/services_page.dart';
+import 'package:provider/provider.dart';
+import 'package:skillworker/providers/user_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,19 +18,24 @@ class _HomePageState extends State<HomePage> {
   int _page = 0;
 
   late PageController pageController;
-  TextEditingController _searchController = TextEditingController();
+
+// Store data in the user provider
+  addData() async {
+    UserProvider _userProvider = Provider.of(context, listen: false);
+    await _userProvider.refreshUser();
+  }
 
   @override
   void initState() {
     super.initState();
     pageController = PageController();
+    addData();
   }
 
   @override
   void dispose() {
     super.dispose();
     pageController.dispose();
-    _searchController.dispose();
   }
 
   void navigationTapped(int page) {
@@ -99,48 +104,13 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        // ******************************** AVATAR
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 12.0),
-          child: CircleAvatar(
-            radius: 20,
-            backgroundImage: NetworkImage(
-                'https://www.mtsolar.us/wp-content/uploads/2020/04/avatar-placeholder.png'),
-          ),
-        ),
-
-        // ******************************** SEARCH BAR
-        title: CupertinoSearchTextField(
-          backgroundColor: Colors.white,
-          controller: _searchController,
-          onSubmitted: (value) {
-            print(value);
-          },
-        ),
-
-        // ******************************** LOGOUT BUTTON
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.logout,
-              ))
-        ],
-      ),
 
       // ******************************** BODY
 
       body: PageView(
         children: [
           BookingPage(),
-          Center(
-            child: Text(
-              'Search',
-            ),
-          ),
+          ServicesPage(),
           Center(
             child: Text(
               'Search',

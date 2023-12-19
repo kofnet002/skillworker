@@ -180,7 +180,7 @@ class _SignupPageState extends State<SignupPage> {
                               ? Center(
                                   child: CircularProgressIndicator(
                                     color:
-                                        Theme.of(context).colorScheme.tertiary,
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 )
                               : Text(
@@ -188,7 +188,7 @@ class _SignupPageState extends State<SignupPage> {
                                   style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .tertiary),
+                                          .secondary),
                                 ),
                           width: double.infinity,
                           alignment: Alignment.center,
@@ -198,7 +198,7 @@ class _SignupPageState extends State<SignupPage> {
                                   borderRadius: BorderRadius.all(
                                 Radius.circular(25),
                               )),
-                              color: Colors.blue.shade800),
+                              color: Theme.of(context).colorScheme.primary),
                         ),
                       ),
                     ),
@@ -214,9 +214,11 @@ class _SignupPageState extends State<SignupPage> {
                         GestureDetector(
                           onTap: navigateToLogin,
                           child: Container(
-                            child: const Text(
+                            child: Text(
                               "Login",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary),
                             ),
                             padding: const EdgeInsets.symmetric(vertical: 8),
                           ),

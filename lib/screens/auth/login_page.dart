@@ -52,8 +52,9 @@ class _LoginPageState extends State<LoginPage> {
     if (res != 'Login successful') {
       showSnackBar(res, context);
     } else {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomePage()));
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const HomePage()),
+          (Route<dynamic> route) => false);
     }
   }
 
@@ -113,24 +114,25 @@ class _LoginPageState extends State<LoginPage> {
                       child: _isLoading
                           ? Center(
                               child: CircularProgressIndicator(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                             )
                           : Text(
                               'Login',
                               style: TextStyle(
                                   color:
-                                      Theme.of(context).colorScheme.tertiary),
+                                      Theme.of(context).colorScheme.secondary),
                             ),
                       width: double.infinity,
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                            Radius.circular(25),
-                          )),
-                          color: Colors.blue.shade800),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                          Radius.circular(25),
+                        )),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -146,9 +148,11 @@ class _LoginPageState extends State<LoginPage> {
                     GestureDetector(
                       onTap: navigateToLogin,
                       child: Container(
-                        child: const Text(
+                        child: Text(
                           "Sign up",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.primary),
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 8),
                       ),
